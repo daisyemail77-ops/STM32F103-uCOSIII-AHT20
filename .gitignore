@@ -1,0 +1,9 @@
+Objects/
+Listings/
+DebugConfig/
+*.uvguix.*
+*.log
+*.scvd
+tmp_edge*/
+_report.html
+_preview.png
