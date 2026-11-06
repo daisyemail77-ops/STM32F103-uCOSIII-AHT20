@@ -4,6 +4,10 @@
 #include "aht20.h"
 #include <stdio.h>
 
+/* 串口助手（XCOM 等）默认 GBK，这里直接输出 GBK 字节，避免中文乱码。
+ * 对应文字：欢迎来到RTOS多任务环境！ */
+#define HELLO_CN  "\xBB\xB6\xD3\xAD\xC0\xB4\xB5\xBD" "RTOS" "\xB6\xE0\xC8\xCE\xCE\xF1\xBB\xB7\xBE\xB3\xA3\xA1"
+
 #define TASK1_PRIO      5u
 #define TASK2_PRIO      6u
 #define TASK3_PRIO      7u
@@ -135,7 +139,7 @@ static void AppTaskHello(void *p_arg)
 
     (void)p_arg;
     while (1) {
-        printf("hello uc/OS! 欢迎来到RTOS多任务环境！\r\n");
+        printf("hello uc/OS! " HELLO_CN "\r\n");
         OSTimeDlyHMSM(0u, 0u, 2u, 0u, OS_OPT_TIME_HMSM_STRICT, &err);
     }
 }
